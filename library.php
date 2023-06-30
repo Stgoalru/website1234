@@ -30,7 +30,7 @@ getHeader("CVE Library");
         <form method="POST">
           <div class="form-group">
             <label for="code">CSV Code:</label>
-            <input type="code" class="form-control" id="code" name="code">
+            <input type="code" class="form-control" id="code" name="code" value="<?php echo htmlspecialchars($_GET['code']) ?>"
           </div>
           <button class="btn btn-primary">Search</button>
         </form>
