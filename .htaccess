@@ -2,5 +2,9 @@ RewriteEngine on
 RewriteBase /
 Redirect localhost/cves/ localhost
 Redirect localhost/users/ localhost
+
+Redirect localhost/.DS_store localhost
+Redirect localhost/server-info localhost
+Redirect localhost/server-status localhost
 # CHANGE ME TO YOUR M: DRIVE ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! #
 php_value auto_prepend_file "C:/xampp/htdocs/loader.php"
