@@ -21,7 +21,22 @@ getHeader("CVE Info");
 
 <?php
 
+if (isset($_GET['id'])){
 $id = $_GET['id']; // GET the id values from the URL bar
+  if(is_numeric($id) == true){
+    try{
+      $dbh = new PDO ('mysql:host=localhost;dbname=cve_database','dbuser','dbpasswd');
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMORE_EXCEPTION);
+      $q = "SELECT code FROM cves WHERE id = :id";
+      $sth = $dbh->prepare($q);
+      $sth->bindParam(':id', $id);
+      $sth->execute();
+      $sth->setFetchMode(PDO::FETCH_ASSOC);
+      $result = $sth->fetchColumn();
+      $id = $result;
+    }
+  }
+}
 
 if ($stmt = $GLOBALS['database'] -> prepare("SELECT `id`, `code`, `score`, `date`, `type`, `complexity`, `description`, `url` FROM `cves` WHERE `id` = " . $id))
 {
